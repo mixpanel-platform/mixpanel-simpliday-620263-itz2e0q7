@@ -1,272 +1,256 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!doctype html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1348.17">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
-</head>
-<body>
-<p class="p1">&lt;!doctype html&gt;</p>
-<p class="p1">&lt;html&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">     </span>#run {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>margin-top:5px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>float:left;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>clear:both;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding: 6px 12px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background-color: #61adf0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background-image: -webkit-linear-gradient(#6ab5f2,#53a0ee);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>background-image: linear-gradient(#6ab5f2,#53a0ee);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>box-shadow: inset 0 1px 1px #77bdf4,0 2px 2px -1px rgba(0,0,0,0.2);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>border: 1px solid #4d93d7;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>text-shadow: 0 -1px 0 rgba(0,0,0,0.2);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>border-radius: 3px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.node circle {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>fill: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>stroke: steelblue;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>stroke-width: 1.5px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}se</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.node {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font: 10px sans-serif;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.link {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>fill: none;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>stroke: steelblue;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>stroke-linecap: round;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;body class="mixpanel-platform-body" style="overflow-x:scroll;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="eventSelect" style="float: left;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="dateSelect" style="float: right;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="clear: both;"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;button id="run" value="Run" style="display: none;"&gt;Run&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>MP.api.MAX_SIMULTANEOUS_QUERIES = 30</p>
-<p class="p1"><span class="Apple-converted-space">      </span>var datesSelector = $('#dateSelect').MPDatepicker();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>var rootEventSelect = $('#eventSelect').MPEventSelect();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>/* Global Event List */</p>
-<p class="p1"><span class="Apple-converted-space">      </span>var rootEvent;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>var objs = {};</p>
-<p class="p1"><span class="Apple-converted-space">      </span>var graphData = {}</p>
-<p class="p2"><span class="Apple-converted-space">      </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>var params = {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>from: moment().subtract(30, 'days'),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>to: moment(),</p>
-<p class="p1"><span class="Apple-converted-space">        </span>length: 14,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>limit: 200,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>interval: 90</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>var width = 960;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>var height = 750;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>var cluster = d3.layout.cluster()</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.size([height, width - 160]);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>var diagonal = d3.svg.diagonal()</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.projection(function(d) { return [d.y, d.x]; });</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>var svg = d3.select("body").append("svg")</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.attr("width", width)</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.attr("height", height)</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.call(d3.behavior.zoom().on("zoom", function () {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")</p>
-<p class="p1"><span class="Apple-converted-space">              </span>})</p>
-<p class="p1"><span class="Apple-converted-space">            </span>)</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.append("g")</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.attr("transform", "translate(40,0)");</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>function addNode(data){</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>d3.selectAll(".text").remove();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>d3.selectAll(".node").remove();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>d3.selectAll(".link").remove();</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>var nodes = cluster.nodes(data),</p>
-<p class="p1"><span class="Apple-converted-space">          </span>links = cluster.links(nodes);</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>nodes.forEach(function(d) { d.y = d.depth * 180; });</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>var allLinks = svg.selectAll(".link").data(links);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var link = allLinks.enter().append("path")</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.attr("class", "link")</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.style('stroke-width', function(d) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return ( d.target.root * .2 );</p>
-<p class="p1"><span class="Apple-converted-space">          </span>});</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>allLinks.transition().duration(1000).attr("d", diagonal);</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>var allNodes = svg.selectAll(".node").data(nodes);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var node = allNodes.enter().append("g")</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.attr("class", "node")</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.style('cursor','pointer')</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.style('opacity', 0.6)</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.on('mouseover', function(d){</p>
-<p class="p1"><span class="Apple-converted-space">              </span>d3.select(this).style('opacity', 1.0)</p>
-<p class="p1"><span class="Apple-converted-space">              </span>d3.select("text").style('opacity', 1.0);</p>
-<p class="p1"><span class="Apple-converted-space">          </span>})</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.on('mouseout', function(d){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>d3.select(this).style('opacity', 0.6)</p>
-<p class="p1"><span class="Apple-converted-space">          </span>})</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.on('click', function(val){</p>
-<p class="p1"><span class="Apple-converted-space">              </span>console.log (val)</p>
-<p class="p1"><span class="Apple-converted-space">              </span>if (val.children) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>val._children = val.children;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>val.children = null;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>addNode(graphData)</p>
-<p class="p1"><span class="Apple-converted-space">              </span>} else if (val._children) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>val.children = val._children;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>addNode(graphData);</p>
-<p class="p1"><span class="Apple-converted-space">              </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>val._children = true ;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>nodeQuery(objs, val);</p>
-<p class="p1"><span class="Apple-converted-space">              </span>}</p>
-<p class="p1"><span class="Apple-converted-space">          </span>});</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>node.append('svg:title')</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.text(function(d) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>var count = 'Count: ' + String(d.count) + '\n';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>var parent = 'Conversion From Parent Event: ' + String(d.conversion) + '%\n';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>var root = 'Conversion From Root Event: ' + String(d.root) + '%';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return count + parent + root });</p>
-<p class="p1"><span class="Apple-converted-space">        </span>node.append("circle")</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.attr("r", 4.5);</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>node.append("text")</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.attr("dx", function(d) { return d.children ? 0 : 8; })</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.attr("dy", function(d) { return d.children ? 18 : 3; })</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.text(function(d) { return d.name; })</p>
-<p class="p1"><span class="Apple-converted-space">          </span>.attr("text-anchor", function(d){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>return ( d.children ? "middle" : undefined );</p>
-<p class="p1"><span class="Apple-converted-space">          </span>});</p>
-<p class="p1"><span class="Apple-converted-space">      </span>};</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>/* Let the Funnel Queries Begin... */</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">      </span>var nodeQuery = function(event_list, node){</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Dict with top counts for each event */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var nodes = {};</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var promises = []</p>
-<p class="p2"><span class="Apple-converted-space">          </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>_.each(_.keys(event_list), function(key) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>var event = event_list[key];</p>
-<p class="p1"><span class="Apple-converted-space">          </span>var parent = node;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>var selector_str;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>var events = [];</p>
-<p class="p1"><span class="Apple-converted-space">          </span>while (parent){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>events.push({'event': event});</p>
-<p class="p1"><span class="Apple-converted-space">            </span>event = parent.name</p>
-<p class="p1"><span class="Apple-converted-space">            </span>parent = parent.parent</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">          </span>events.push({'event': event});</p>
-<p class="p1"><span class="Apple-converted-space">          </span>events.reverse();</p>
-<p class="p1"><span class="Apple-converted-space">          </span>events.push(params);</p>
-<p class="p1"><span class="Apple-converted-space">          </span>promises.push(MP.api.funnel.apply(MP.api, events));</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>Promise.all(promises).then(function(promiseArray){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>_.each(promiseArray, function(data){</p>
-<p class="p1"><span class="Apple-converted-space">                </span>total = 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>var length = data.length - 1;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>_.each(_.values(data[length]), function(funnelObj){ total += funnelObj.count });</p>
-<p class="p1"><span class="Apple-converted-space">                </span>nodes[_.values(data[length])[0].event] = total;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">          </span>}).then(function(){</p>
-<p class="p1"><span class="Apple-converted-space">             </span>/* Add Data to Graph Data */</p>
-<p class="p1"><span class="Apple-converted-space">             </span>var total = _.values(nodes).reduce(function(a , b){return a + b;});</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">             </span>_.each(_.keys(nodes), function(key){</p>
-<p class="p1"><span class="Apple-converted-space">               </span>/*</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>Build a node object with the conversion percentage and other meta data and add it to the children</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>of the parent node</p>
-<p class="p1"><span class="Apple-converted-space">               </span>*/</p>
-<p class="p1"><span class="Apple-converted-space">                </span>var conversion = Math.floor(nodes[key] / node.count * 100);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>var root = Math.floor(nodes[key] / graphData.count * 100);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (conversion &lt; 2 ) { return };</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (node.children) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>node.children.push({</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>'name':key,</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>'root': root,</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>'conversion': conversion,</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>'count':nodes[key]</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
-<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>node.children = [{</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>'name':key,</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>'root': root,</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>'conversion': conversion,</p>
-<p class="p1"><span class="Apple-converted-space">                      </span>'count':nodes[key]</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">             </span>})</p>
-<p class="p1"><span class="Apple-converted-space">             </span>addNode(graphData);</p>
-<p class="p1"><span class="Apple-converted-space">             </span>console.log(graphData)</p>
-<p class="p1"><span class="Apple-converted-space">          </span>});</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>rootEventSelect.on('change', function(e){</p>
-<p class="p1"><span class="Apple-converted-space">        </span>$('#run').show();</p>
-<p class="p1"><span class="Apple-converted-space">      </span>})</p>
-<p class="p1"><span class="Apple-converted-space">      </span>$('#run').on('click', function(e){</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var rootEvent = rootEventSelect.MPEventSelect('value')</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var dates = datesSelector.MPDatepicker('value')</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>params.from = dates.from;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>params.to = dates.to;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* This Event Represents the Origin of the User Flow Diagram. */</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>graphData = {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>'name': rootEvent,</p>
-<p class="p1"><span class="Apple-converted-space">          </span>'conversion': 100,</p>
-<p class="p1"><span class="Apple-converted-space">          </span>'root': 100,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>var rootParams = {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>from: params.from,</p>
-<p class="p1"><span class="Apple-converted-space">          </span>to: params.to,</p>
-<p class="p1"><span class="Apple-converted-space">          </span>type: 'unique',</p>
-<p class="p1"><span class="Apple-converted-space">          </span>interval: 32,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Top Event Queries */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var topEventsParams = {'limit':'30'};</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var topEvents = MP.api.topEvents(topEventsParams);</p>
-<p class="p2"><span class="Apple-converted-space">  </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Funnel Queries */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>$.when(topEvents).done(function(events){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>objs = events.values();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Find the Root Event Count */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>var rootEventCount = MP.api.segment(rootEvent,rootParams);</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>$.when(rootEventCount).done(function(eventCount){</p>
-<p class="p1"><span class="Apple-converted-space">            </span>graphData.count = eventCount.sum().values()[rootEvent];</p>
-<p class="p1"><span class="Apple-converted-space">            </span>addNode(graphData);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-</body>
-</html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.css">
+    <script src="https://cdn.mxpnl.com/libs/mixpanel-platform/build/mixpanel-platform.v0.latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+    <style>
+     #run {
+        margin-top:5px;
+        float:left;
+        clear:both;
+        padding: 6px 12px;
+        background-color: #61adf0;
+        background-image: -webkit-linear-gradient(#6ab5f2,#53a0ee);
+        background-image: linear-gradient(#6ab5f2,#53a0ee);
+        box-shadow: inset 0 1px 1px #77bdf4,0 2px 2px -1px rgba(0,0,0,0.2);
+        text-transform: uppercase;
+        border: 1px solid #4d93d7;
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+        border-radius: 3px;
+        cursor: pointer;
+        font-weight: bold;
+      }
 
+      .node circle {
+        fill: #fff;
+        stroke: steelblue;
+        stroke-width: 1.5px;
+      }se
+
+      .node {
+        font: 10px sans-serif;
+
+      }
+
+      .link {
+        fill: none;
+        stroke: steelblue;
+        stroke-linecap: round;
+      }
+    </style>
+  </head>
+  <body class="mixpanel-platform-body" style="overflow-x:scroll;">
+      <div id="eventSelect" style="float: left;"></div>
+      <div id="dateSelect" style="float: right;"></div>
+      <div style="clear: both;"></div>
+      <button id="run" value="Run" style="display: none;">Run</button>
+    <script>
+    debugger
+      MP.api.MAX_SIMULTANEOUS_QUERIES = 30
+      var datesSelector = $('#dateSelect').MPDatepicker();
+      var rootEventSelect = $('#eventSelect').MPEventSelect();
+      /* Global Event List */
+      var rootEvent;
+      var objs = {};
+      var graphData = {}
+      
+      var params = {
+        from: moment().subtract(30, 'days'),
+        to: moment(),
+        length: 14,
+        limit: 200,
+        interval: 90
+      }
+  
+      var width = 960;
+      var height = 750;
+      var cluster = d3.layout.cluster()
+        .size([height, width - 160]);
+      var diagonal = d3.svg.diagonal()
+        .projection(function(d) { return [d.y, d.x]; });
+  
+      var svg = d3.select("body").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .call(d3.behavior.zoom().on("zoom", function () {
+                svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+              })
+            )
+        .append("g")
+        .attr("transform", "translate(40,0)");
+  
+      function addNode(data){
+  
+        d3.selectAll(".text").remove();
+        d3.selectAll(".node").remove();
+        d3.selectAll(".link").remove();
+  
+        var nodes = cluster.nodes(data),
+          links = cluster.links(nodes);
+  
+        nodes.forEach(function(d) { d.y = d.depth * 180; });
+  
+        var allLinks = svg.selectAll(".link").data(links);
+        var link = allLinks.enter().append("path")
+          .attr("class", "link")
+          .style('stroke-width', function(d) {
+            return ( d.target.root * .2 );
+          });
+  
+        allLinks.transition().duration(1000).attr("d", diagonal);
+  
+        var allNodes = svg.selectAll(".node").data(nodes);
+        var node = allNodes.enter().append("g")
+          .attr("class", "node")
+          .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+          .style('cursor','pointer')
+          .style('opacity', 0.6)
+          .on('mouseover', function(d){
+              d3.select(this).style('opacity', 1.0)
+              d3.select("text").style('opacity', 1.0);
+          })
+          .on('mouseout', function(d){
+            d3.select(this).style('opacity', 0.6)
+          })
+          .on('click', function(val){
+              console.log (val)
+              if (val.children) {
+                val._children = val.children;
+                val.children = null;
+                addNode(graphData)
+              } else if (val._children) {
+                val.children = val._children;
+                addNode(graphData);
+              } else {
+                val._children = true ;
+                nodeQuery(objs, val);
+              }
+          });
+  
+        node.append('svg:title')
+          .text(function(d) {
+            var count = 'Count: ' + String(d.count) + '\n';
+            var parent = 'Conversion From Parent Event: ' + String(d.conversion) + '%\n';
+            var root = 'Conversion From Root Event: ' + String(d.root) + '%';
+            return count + parent + root });
+        node.append("circle")
+            .attr("r", 4.5);
+  
+        node.append("text")
+          .attr("dx", function(d) { return d.children ? 0 : 8; })
+          .attr("dy", function(d) { return d.children ? 18 : 3; })
+          .text(function(d) { return d.name; })
+          .attr("text-anchor", function(d){
+            return ( d.children ? "middle" : undefined );
+          });
+      };
+  
+      /* Let the Funnel Queries Begin... */
+  
+      var nodeQuery = function(event_list, node){
+        /* Dict with top counts for each event */
+        var nodes = {};
+        var promises = []
+          
+        _.each(_.keys(event_list), function(key) {
+          var event = event_list[key];
+          var parent = node;
+          var selector_str;
+          var events = [];
+          while (parent){
+            events.push({'event': event});
+            event = parent.name
+            parent = parent.parent
+          }
+          events.push({'event': event});
+          events.reverse();
+          events.push(params);
+          promises.push(MP.api.funnel.apply(MP.api, events));
+        });
+
+          Promise.all(promises).then(function(promiseArray){
+            _.each(promiseArray, function(data){
+                total = 0;
+                var length = data.length - 1;
+                _.each(_.values(data[length]), function(funnelObj){ total += funnelObj.count });
+                nodes[_.values(data[length])[0].event] = total;
+            });
+          }).then(function(){
+             /* Add Data to Graph Data */
+             var total = _.values(nodes).reduce(function(a , b){return a + b;});
+  
+             _.each(_.keys(nodes), function(key){
+               /*
+                  Build a node object with the conversion percentage and other meta data and add it to the children
+                  of the parent node
+               */
+                var conversion = Math.floor(nodes[key] / node.count * 100);
+                var root = Math.floor(nodes[key] / graphData.count * 100);
+                if (conversion < 2 ) { return };
+                if (node.children) {
+                    node.children.push({
+                      'name':key,
+                      'root': root,
+                      'conversion': conversion,
+                      'count':nodes[key]
+                    });
+                } else {
+                    node.children = [{
+                      'name':key,
+                      'root': root,
+                      'conversion': conversion,
+                      'count':nodes[key]
+                    }];
+                }
+             })
+             addNode(graphData);
+             console.log(graphData)
+          });
+      }
+      rootEventSelect.on('change', function(e){
+        $('#run').show();
+      })
+      $('#run').on('click', function(e){
+        var rootEvent = rootEventSelect.MPEventSelect('value')
+        var dates = datesSelector.MPDatepicker('value')
+        
+        params.from = dates.from;
+        params.to = dates.to;
+        
+        /* This Event Represents the Origin of the User Flow Diagram. */
+        
+        graphData = {
+          'name': rootEvent,
+          'conversion': 100,
+          'root': 100,
+        };
+        
+        var rootParams = {
+          from: params.from,
+          to: params.to,
+          type: 'unique',
+          interval: 32,
+        };
+        
+        /* Top Event Queries */
+        var topEventsParams = {'limit':'30'};
+        var topEvents = MP.api.topEvents(topEventsParams);
+  
+        /* Funnel Queries */
+        $.when(topEvents).done(function(events){
+            objs = events.values();
+        });
+        /* Find the Root Event Count */
+        var rootEventCount = MP.api.segment(rootEvent,rootParams);
+        
+        $.when(rootEventCount).done(function(eventCount){
+            graphData.count = eventCount.sum().values()[rootEvent];
+            addNode(graphData);
+        });
+      });
+    </script>
+  </body>
+</html>
